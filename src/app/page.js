@@ -1,7 +1,6 @@
 'use client';
 
 import { useAuth } from '../utils/context/authContext';
-import ClassroomForm from '../components/forms/ClassroomForm';
 
 function Home() {
   const { user } = useAuth();
@@ -18,7 +17,6 @@ function Home() {
       }}
     >
       <h1>Welcome, {user.displayName}!</h1>
-      <ClassroomForm />
     </div>
   );
 }

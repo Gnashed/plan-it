@@ -1,8 +1,10 @@
 'use client';
 
-import Signin from '../components/SignIn';
+import { useAuth } from '../utils/context/authContext';
 
 function Home() {
+  const { user } = useAuth();
+
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -13,7 +15,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <Signin />
+      <h1>Welcome, {user.displayName}!</h1>
     </div>
   );
 }

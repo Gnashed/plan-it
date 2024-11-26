@@ -1,0 +1,30 @@
+{
+  "-OCdhp_HzyrJEBi30uq5":
+    {
+      "firebaseKey":"-OCdhp_HzyrJEBi30uq5",
+      "subject":"English",
+      "grade_level":5,
+      "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
+    },
+  "-OCdhp_HzyrJEBi30uq6":
+    {
+      "firebaseKey":"-OCdhp_HzyrJEBi30uq6",
+      "subject":"Geometry and Trig.",
+      "grade_level":10,
+      "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
+    },
+  "-OCdhp_IIpKcFOp25k3V":
+    {
+      "firebaseKey":"-OCdhp_IIpKcFOp25k3V",
+      "subject":"English",
+      "grade_level":4,
+      "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
+    },
+  "-OCdhp_JmbDGWSUYn9Fw":
+    {
+      "firebaseKey":"-OCdhp_JmbDGWSUYn9Fw",
+      "subject":"World History and Geography",
+      "grade_level":9,
+      "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
+    }
+}

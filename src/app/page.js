@@ -72,7 +72,7 @@ function Home() {
           </Modal>
         </div>
         <div className="col">
-          <Link href="/fixme" passHref>
+          <Link href="/classroom/manage" passHref>
             Manage classrooms
           </Link>
         </div>

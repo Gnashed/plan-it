@@ -9,7 +9,6 @@ function Signin() {
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
         margin: '0 auto',
         backgroundColor: '#9E55F2',
         color: '#F2FF49',

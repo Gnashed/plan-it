@@ -1,21 +1,25 @@
 'use client';
 
-// import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Button, Modal } from 'react-bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { useAuth } from '../utils/context/authContext';
-// import getClassrooms from '../api/classroomData';
+import getClassrooms from '../api/classroomData';
 
 function Home() {
   const { user } = useAuth();
 
-  // const [classrooms, setClassrooms] = useState([]);
+  // React Bootstrap modal
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
-  // const getAllClassrooms = () => {
-  //   getClassrooms(user.uid).then(setClassrooms);
-  // }
+  const [classrooms, setClassrooms] = useState([]);
 
-  // useEffect(() => {
-  //   getAllClassrooms();
-  // });
+  useEffect(() => {
+    getClassrooms(user.uid).then(setClassrooms);
+  }, []);
 
   // TODO: Refactor to render either a form if user doesn't have any created classrooms or render the dashboard.
   return (
@@ -24,11 +28,58 @@ function Home() {
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
         margin: '0 auto',
       }}
     >
-      <h1>Welcome, {user.displayName}!</h1>
+      <h1 className="mb-5">Welcome, {user.displayName}!</h1>
+
+      <div className="container row">
+        <div className="col">
+          <Link href="/classroom/new" passHref>
+            Create classroom
+          </Link>
+        </div>
+        <div className="col">
+          <Button variant="primary" onClick={handleShow}>
+            View classroom
+          </Button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header>
+              <Modal.Title>Select a classroom to view</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {/* TODO: Dropdown goes here */}
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Select ...
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  {classrooms.map((classroom) => (
+                    <Dropdown.Item key={classroom.firebaseKey}>
+                      <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.subject}</Link>
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+        <div className="col">
+          <Link href="/classroom/new" passHref>
+            Manage classrooms
+          </Link>
+        </div>
+        {/* <div className="col">
+          <button type="button">Add a student</button>
+        </div> */}
+      </div>
     </div>
   );
 }

@@ -1,13 +1,24 @@
-// import PropTypes from 'prop-types';
+'use client';
 
-// TODO: Pass in params
-export default function ViewClassroom() {
-  // grab firebaseKey from url
-  // const { firebaseKey } = params;
+import React from 'react';
+import StudentCard from '../../../components/students/StudentCard';
 
-  return <div>View Classroom</div>;
+export default function page() {
+  return (
+    <div className="d-flex flex-column">
+      <h1 className="text-center my-4">Classroom</h1>
+
+      <div className="d-flex flex-row flex-wrap my-5 justify-content-center">
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+        <StudentCard />
+      </div>
+    </div>
+  );
 }
-
-// ViewClassroom.propTypes = {
-//   params: PropTypes.objectOf({}).isRequired,
-// };

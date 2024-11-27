@@ -44,13 +44,13 @@ function Home() {
             View classroom
           </Button>
 
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} onHide={handleClose} data-bs-theme="dark">
             <Modal.Header>
               <Modal.Title>Select a classroom to view</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               {/* TODO: Dropdown goes here */}
-              <Dropdown>
+              <Dropdown data-bs-theme="dark">
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   Select ...
                 </Dropdown.Toggle>

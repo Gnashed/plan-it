@@ -1,16 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import StudentCard from '../../../components/students/StudentCard';
-// import { useAuth } from '../../../utils/context/authContext';
 import getStudents from '../../../api/studentData';
 
-export default function Page() {
-  // const { user } = useAuth();
+export default function ViewClassroom({ params }) {
+  const { firebaseKey } = params;
   const [students, setStudents] = useState([]);
 
   const getAllStudents = () => {
-    getStudents('-OCdhp_JmbDGWSUYn9Fw').then(setStudents);
+    getStudents(firebaseKey).then(setStudents);
   };
 
   useEffect(() => {
@@ -30,3 +30,7 @@ export default function Page() {
     </div>
   );
 }
+
+ViewClassroom.propTypes = {
+  params: PropTypes.objectOf({}).isRequired,
+};

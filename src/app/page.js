@@ -19,7 +19,7 @@ function Home() {
 
   useEffect(() => {
     getClassrooms(user.uid).then(setClassrooms);
-  }, []);
+  });
 
   // TODO: Refactor to render either a form if user doesn't have any created classrooms or render the dashboard.
   return (
@@ -72,7 +72,7 @@ function Home() {
           </Modal>
         </div>
         <div className="col">
-          <Link href="/classroom/new" passHref>
+          <Link href="/fixme" passHref>
             Manage classrooms
           </Link>
         </div>

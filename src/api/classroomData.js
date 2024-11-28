@@ -31,13 +31,7 @@ const getSingleClassroom = (classroomId) =>
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          resolve(data);
-        } else {
-          resolve([]);
-        }
-      })
+      .then((data) => resolve(data))
       .catch(reject);
   });
 

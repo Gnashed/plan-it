@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ClassroomCard from '../../../components/classrooms/ClassroomCard';
-import getClassrooms from '../../../api/classroomData';
+import { getClassrooms } from '../../../api/classroomData';
 import { useAuth } from '../../../utils/context/authContext';
 
 export default function Page() {
@@ -16,7 +16,7 @@ export default function Page() {
 
   useEffect(() => {
     getAllClassrooms();
-  });
+  }, []);
 
   return (
     <div className="d-flex flex-column my-4 text-center">

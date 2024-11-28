@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button, Modal } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAuth } from '../utils/context/authContext';
-import getClassrooms from '../api/classroomData';
+import { getClassrooms } from '../api/classroomData';
 
 function Home() {
   const { user } = useAuth();
@@ -19,7 +19,7 @@ function Home() {
 
   useEffect(() => {
     getClassrooms(user.uid).then(setClassrooms);
-  });
+  }, []);
 
   // TODO: Refactor to render either a form if user doesn't have any created classrooms or render the dashboard.
   return (

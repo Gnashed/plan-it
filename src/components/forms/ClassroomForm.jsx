@@ -10,7 +10,7 @@ import { useAuth } from '../../utils/context/authContext';
 const initialFormState = {
   classroom_name: '',
   subject: '',
-  grade_level: '',
+  grade_level: Number(''),
 };
 
 export default function ClassroomForm({ obj = initialFormState }) {

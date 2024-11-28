@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export default function ClassroomCard({ classroomObj }) {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', backgroundColor: '#222', color: '#fff' }} className="m-3">
       <Card.Body>
         <Card.Title>{classroomObj.classroom_name}</Card.Title>
         <Card.Text>Subject: {classroomObj.subject}</Card.Text>

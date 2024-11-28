@@ -51,7 +51,7 @@ export default function ClassroomForm({ obj = initialFormState }) {
         {/* Subject */}
         <Form.Group>
           <Form.Label>Which subject?</Form.Label>
-          <Form.Control type="text" name="subject" placeholder="4th Grade English" value={formInput.subject} onChange={handleChange} required />
+          <Form.Control type="text" name="subject" placeholder="4th Grade English" value={formInput.subject || ''} onChange={handleChange} required />
         </Form.Group>
 
         {/* SELECT Grade Level */}

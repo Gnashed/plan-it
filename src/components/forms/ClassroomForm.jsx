@@ -17,15 +17,15 @@ const initialFormState = {
 export default function ClassroomForm({ obj = initialFormState }) {
   const { user } = useAuth();
   const router = useRouter();
-  const [formInput, setFormData] = useState(obj);
+  const [formInput, setFormInput] = useState(obj);
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormData(obj);
+    if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
+    setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
     }));

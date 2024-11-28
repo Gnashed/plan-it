@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import ClassroomForm from '../../../../components/forms/ClassroomForm';
 import { getSingleClassroom } from '../../../../api/classroomData';
+import ClassroomForm from '../../../../components/forms/ClassroomForm';
 
 export default function EditClassroom({ params }) {
   const { firebaseKey } = params;

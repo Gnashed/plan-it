@@ -17,6 +17,7 @@ const initialFormState = {
 export default function ClassroomForm({ obj = initialFormState }) {
   const { user } = useAuth();
   const router = useRouter();
+
   const [formInput, setFormInput] = useState(obj);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function ClassroomForm({ obj = initialFormState }) {
     e.preventDefault();
 
     if (obj.firebaseKey) {
-      updateClassroom(FormData).then(() => router.push(`/classroom/${obj.firebaseKey}`));
+      updateClassroom(formInput).then(() => router.push(`/classroom/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, teacher_id: user.uid };
       createClassroom(payload).then(({ name }) => {
@@ -56,13 +57,13 @@ export default function ClassroomForm({ obj = initialFormState }) {
         {/* Classroom Name */}
         <Form.Group>
           <Form.Label>Give your classroom a name:</Form.Label>
-          <Form.Control type="text" name="classroom_name" placeholder="1st Period English" value={formInput.classroom_name || ''} onChange={handleChange} required />
+          <Form.Control type="textbox" name="classroom_name" placeholder="1st Period English" value={formInput.classroom_name || ''} onChange={handleChange} required />
         </Form.Group>
 
         {/* Subject */}
         <Form.Group>
           <Form.Label>Which subject?</Form.Label>
-          <Form.Control type="text" name="subject" placeholder="4th Grade English" value={formInput.subject || ''} onChange={handleChange} required />
+          <Form.Control type="textbox" name="subject" placeholder="4th Grade English" value={formInput.subject || ''} onChange={handleChange} required />
         </Form.Group>
 
         {/* SELECT Grade Level */}
@@ -101,5 +102,5 @@ ClassroomForm.propTypes = {
     subject: PropTypes.string,
     grade_level: PropTypes.string,
     teacher_id: PropTypes.string,
-  }).isRequired,
+  }),
 };

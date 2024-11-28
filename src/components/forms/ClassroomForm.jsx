@@ -10,15 +10,15 @@ import { updateClassroom, createClassroom } from '../../api/classroomData';
 
 const initialFormState = {
   classroom_name: '',
-  subject: '',
   grade_level: '',
+  subject: '',
 };
 
 export default function ClassroomForm({ obj = initialFormState }) {
+  const [formInput, setFormInput] = useState(obj);
+
   const { user } = useAuth();
   const router = useRouter();
-
-  const [formInput, setFormInput] = useState(obj);
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
@@ -55,19 +55,19 @@ export default function ClassroomForm({ obj = initialFormState }) {
 
       <Form className="my-5" onSubmit={handleSubmit}>
         {/* Classroom Name */}
-        <Form.Group>
+        <Form.Group controlId="">
           <Form.Label>Give your classroom a name:</Form.Label>
-          <Form.Control type="textbox" name="classroom_name" placeholder="1st Period English" value={formInput.classroom_name || ''} onChange={handleChange} required />
+          <Form.Control type="textbox" name="classroom_name" placeholder="..." value={formInput.classroom_name || ''} onChange={handleChange} required />
         </Form.Group>
 
         {/* Subject */}
-        <Form.Group>
+        <Form.Group controlId="">
           <Form.Label>Which subject?</Form.Label>
-          <Form.Control type="textbox" name="subject" placeholder="4th Grade English" value={formInput.subject || ''} onChange={handleChange} required />
+          <Form.Control type="textbox" name="subject" placeholder="..." value={formInput.subject || ''} onChange={handleChange} required />
         </Form.Group>
 
         {/* SELECT Grade Level */}
-        <Form.Group>
+        <Form.Group controlId="">
           <Form.Label>Grade level: </Form.Label>
           <Form.Select onChange={handleChange} name="grade_level" value={formInput.grade_level || ''} required>
             <option value="">select ...</option>
@@ -102,5 +102,6 @@ ClassroomForm.propTypes = {
     subject: PropTypes.string,
     grade_level: PropTypes.string,
     teacher_id: PropTypes.string,
+    firebaseKey: PropTypes.string,
   }),
 };

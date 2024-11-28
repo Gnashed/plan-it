@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
+import { updateClassroom, createClassroom } from '../../api/classroomData';
 
 const initialFormState = {
   classroom_name: '',
@@ -15,7 +16,7 @@ const initialFormState = {
 
 export default function ClassroomForm({ obj = initialFormState }) {
   const { user } = useAuth();
-  // const { router } = useRouter();
+  const router = useRouter();
   const [formInput, setFormData] = useState(obj);
 
   useEffect(() => {
@@ -30,9 +31,19 @@ export default function ClassroomForm({ obj = initialFormState }) {
     }));
   };
 
-  // TODO: Finish adding logic to submit the form. Get ready to import some promises from /api
+  // TODO: Finish adding logic to submit the form.
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (obj.firebaseKey) {
+      updateClassroom(FormData).then(() => router.push(`/classroom/${obj.firebaseKey}`));
+    } else {
+      const payload = { ...formInput, teacher_id: user.uid };
+      createClassroom(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateClassroom(patchPayload).then(() => router.push(`/classroom/manage/`));
+      });
+    }
 
     console.warn(formInput);
   };
@@ -89,5 +100,6 @@ ClassroomForm.propTypes = {
     classroom_name: PropTypes.string,
     subject: PropTypes.string,
     grade_level: PropTypes.string,
+    teacher_id: PropTypes.string,
   }).isRequired,
 };

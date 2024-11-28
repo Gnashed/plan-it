@@ -2,5 +2,9 @@ import React from 'react';
 import ClassroomForm from '../../../components/forms/ClassroomForm';
 
 export default function Page() {
-  return <ClassroomForm />;
+  return (
+    <div style={{ backgroundColor: '#222' }}>
+      <ClassroomForm />
+    </div>
+  );
 }

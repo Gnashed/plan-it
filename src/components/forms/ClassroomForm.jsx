@@ -10,7 +10,7 @@ import { useAuth } from '../../utils/context/authContext';
 const initialFormState = {
   classroom_name: '',
   subject: '',
-  grade_level: Number(''),
+  grade_level: '',
 };
 
 export default function ClassroomForm({ obj = initialFormState }) {
@@ -87,6 +87,6 @@ ClassroomForm.propTypes = {
   obj: PropTypes.shape({
     classroom_name: PropTypes.string,
     subject: PropTypes.string,
-    grade_level: PropTypes.number,
+    grade_level: PropTypes.string,
   }).isRequired,
 };

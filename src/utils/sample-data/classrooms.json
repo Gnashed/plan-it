@@ -2,29 +2,33 @@
   "-OCdhp_HzyrJEBi30uq5":
     {
       "firebaseKey":"-OCdhp_HzyrJEBi30uq5",
+      "classroom_name": "First Period English",
       "subject":"English",
-      "grade_level":5,
+      "grade_level": "5th",
       "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
     },
   "-OCdhp_HzyrJEBi30uq6":
     {
       "firebaseKey":"-OCdhp_HzyrJEBi30uq6",
+      "classroom_name": "Amy's 6th period Math",
       "subject":"Geometry and Trig.",
-      "grade_level":10,
+      "grade_level": "10th",
       "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
     },
   "-OCdhp_IIpKcFOp25k3V":
     {
       "firebaseKey":"-OCdhp_IIpKcFOp25k3V",
+      "classroom_name": "Edit Me",
       "subject":"English",
-      "grade_level":4,
+      "grade_level":"4th",
       "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
     },
   "-OCdhp_JmbDGWSUYn9Fw":
     {
       "firebaseKey":"-OCdhp_JmbDGWSUYn9Fw",
+      "classroom_name": "Edit Me too",
       "subject":"World History and Geography",
-      "grade_level":9,
+      "grade_level":"9th",
       "teacher_id":"bmXX6EZQimPf9vkxqr0BiFCfc553"
     }
 }

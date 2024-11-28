@@ -8,7 +8,8 @@ export default function ClassroomCard({ classroomObj }) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{classroomObj.subject}</Card.Title>
+        <Card.Title>{classroomObj.classroom_name}</Card.Title>
+        <Card.Text>Subject: {classroomObj.subject}</Card.Text>
         <Card.Text>Grade level: {classroomObj.grade_level}</Card.Text>
 
         <Card.Link href={`/classroom/${classroomObj.firebaseKey}`}>View</Card.Link>
@@ -21,6 +22,7 @@ export default function ClassroomCard({ classroomObj }) {
 
 ClassroomCard.propTypes = {
   classroomObj: PropTypes.shape({
+    classroom_name: PropTypes.string,
     subject: PropTypes.string,
     grade_level: PropTypes.number,
     firebaseKey: PropTypes.string,

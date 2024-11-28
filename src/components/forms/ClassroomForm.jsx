@@ -75,8 +75,9 @@ export default function ClassroomForm({ obj = initialFormState }) {
           </Form.Select>
         </Form.Group>
 
+        {/* SUBMIT BUTTON  */}
         <Button type="submit" variant="success" className="my-5">
-          Create classroom
+          {obj.firebaseKey ? 'Update ' : 'Create '} classroom
         </Button>
       </Form>
     </div>

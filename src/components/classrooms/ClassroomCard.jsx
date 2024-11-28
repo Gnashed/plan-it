@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 
 export default function ClassroomCard({ classroomObj }) {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', backgroundColor: '#222', color: '#fff' }} className="m-3">
       <Card.Body>
-        <Card.Title>{classroomObj.subject}</Card.Title>
+        <Card.Title>{classroomObj.classroom_name}</Card.Title>
+        <Card.Text>Subject: {classroomObj.subject}</Card.Text>
         <Card.Text>Grade level: {classroomObj.grade_level}</Card.Text>
 
-        <Card.Link href="#">View</Card.Link>
-        <Card.Link href="#">Edit</Card.Link>
+        <Card.Link href={`/classroom/${classroomObj.firebaseKey}`}>View</Card.Link>
+        <Card.Link href={`/classroom/edit/${classroomObj.firebaseKey}`}>Edit</Card.Link>
         <Card.Link href="#">Delete</Card.Link>
       </Card.Body>
     </Card>
@@ -21,7 +22,9 @@ export default function ClassroomCard({ classroomObj }) {
 
 ClassroomCard.propTypes = {
   classroomObj: PropTypes.shape({
+    classroom_name: PropTypes.string,
     subject: PropTypes.string,
     grade_level: PropTypes.number,
+    firebaseKey: PropTypes.string,
   }).isRequired,
 };

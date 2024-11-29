@@ -10,6 +10,7 @@ import { getClassrooms } from '../../api/classroomData';
 // import { createStudent, updateStudent, getSingleStudent } from "../../api/studentData";
 
 const initialFormState = {
+  selectedClassroom: '',
   first_name: '',
   last_name: '',
   grade_level: '',
@@ -29,10 +30,22 @@ export default function StudentForm({ obj = initialFormState }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    // Logic to detect if selectClassroom has a change in value. If so update the form with the new value.
+    if (name === 'selectedClassroom') {
+      // Store the value if found.
+      const selectedValue = classrooms.find((classroom) => classroom.firebaseKey === value);
+      console.log(selectedValue.firebaseKey);
+
+      setFormData((prevState) => ({
+        ...prevState,
+        selectedClassroom: selectedValue.firebaseKey,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -47,12 +60,13 @@ export default function StudentForm({ obj = initialFormState }) {
 
       <Form onSubmit={handleSubmit}>
         {/* SELECT Classroom */}
+
         <Form.Group>
           <Form.Label>Select classroom</Form.Label>
-          <Form.Select onChange={handleChange} value={classrooms.classroom_name || ''} name="classroom" required>
+          <Form.Select onChange={handleChange} value={formData.selectedClassroom || ''} name="selectedClassroom" required>
             <option value="">... </option>
             {classrooms.map((classroom) => (
-              <option key={classroom.firebaseKey} value={classroom}>
+              <option key={classroom.firebaseKey} value={classroom.firebaseKey}>
                 {classroom.classroom_name}
               </option>
             ))}
@@ -60,18 +74,21 @@ export default function StudentForm({ obj = initialFormState }) {
         </Form.Group>
 
         {/* First Name */}
+
         <Form.Group>
           <Form.Label>First name</Form.Label>
           <Form.Control type="textbox" onChange={handleChange} placeholder="..." value={formData.first_name || ''} name="first_name" required />
         </Form.Group>
 
         {/* Last Name */}
+
         <Form.Group>
           <Form.Label>Last name</Form.Label>
           <Form.Control type="textbox" onChange={handleChange} placeholder="..." value={formData.last_name || ''} name="last_name" required />
         </Form.Group>
 
         {/* SELECT Grade Level */}
+
         <Form.Group>
           <Form.Label>Grade level</Form.Label>
           <Form.Select onChange={handleChange} value={formData.grade_level || ''} name="grade_level" required>
@@ -92,6 +109,8 @@ export default function StudentForm({ obj = initialFormState }) {
           </Form.Select>
         </Form.Group>
 
+        {/* Submit button */}
+
         <Button type="submit" variant="primary">
           Add student
         </Button>
@@ -102,6 +121,7 @@ export default function StudentForm({ obj = initialFormState }) {
 
 StudentForm.propTypes = {
   obj: PropTypes.shape({
+    selectClassroom: PropTypes.string,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     grade_level: PropTypes.string,

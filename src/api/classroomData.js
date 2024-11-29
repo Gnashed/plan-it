@@ -24,7 +24,7 @@ const getClassrooms = (teacherId) =>
 
 const getSingleClassroom = (classroomId) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/classroom.json?orderBy="firebaseKey"&equalTo="${classroomId}"`, {
+    fetch(`${endpoint}/classroom/${classroomId}.json`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

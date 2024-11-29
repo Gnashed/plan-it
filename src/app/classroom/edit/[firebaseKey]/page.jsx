@@ -13,6 +13,7 @@ export default function EditClassroom({ params }) {
 
   useEffect(() => {
     getSingleClassroom(firebaseKey).then(setEditFormData);
+    // console.log("Saved form data: ", editFormData);
     // console.log("Params: ", params);
     // console.log("FirebaseKey: ", firebaseKey);
   }, [firebaseKey]);

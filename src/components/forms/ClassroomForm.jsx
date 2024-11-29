@@ -23,12 +23,11 @@ export default function ClassroomForm({ obj = initialFormState }) {
   useEffect(() => {
     console.log('Obj received: ', obj);
     console.log('Firebase Key: ', obj.firebaseKey);
-    // FIXME: Code from if statement doesn't run after this line. The Firebase Key isn't being read.
     if (obj.firebaseKey) {
       console.log('Updating formInput with obj: ', obj);
       setFormInput(obj);
     }
-  }, [obj, user]);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

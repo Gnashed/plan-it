@@ -81,6 +81,11 @@ function Home() {
             Add a student
           </Link>
         </div>
+        <div className="col">
+          <Link href="/student" passHref>
+            View all students
+          </Link>
+        </div>
       </div>
     </div>
   );

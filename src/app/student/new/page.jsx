@@ -1,6 +1,6 @@
 import React from 'react';
-// TODO: Import the form.
+import StudentForm from '../../../components/forms/StudentForm';
 
 export default function NewStudentForm() {
-  return <h1>New Student Form</h1>;
+  return <StudentForm />;
 }

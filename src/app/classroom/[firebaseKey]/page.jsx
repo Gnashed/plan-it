@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import StudentCard from '../../../components/students/StudentCard';
-import getStudents from '../../../api/studentData';
+import { getStudents } from '../../../api/studentData';
 
 export default function ViewClassroom({ params }) {
   const { firebaseKey } = params;

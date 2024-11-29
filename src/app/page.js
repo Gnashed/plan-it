@@ -76,9 +76,16 @@ function Home() {
             Manage classrooms
           </Link>
         </div>
-        {/* <div className="col">
-          <button type="button">Add a student</button>
-        </div> */}
+        <div className="col">
+          <Link href="/student/new" passHref>
+            Add a student
+          </Link>
+        </div>
+        <div className="col">
+          <Link href="/student" passHref>
+            View all students
+          </Link>
+        </div>
       </div>
     </div>
   );

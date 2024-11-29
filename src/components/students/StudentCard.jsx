@@ -18,13 +18,15 @@ export default function StudentCard({ studentObj }) {
         </Card.Title>
 
         <Card.Text>Grade {studentObj.grade_level}</Card.Text>
-        <Card.Text>Average Grade {studentObj.average_grade}</Card.Text>
+        {/* TODO: Stretch Goal */}
+        <Card.Text>Average Grade</Card.Text>
         {/* TODO: Attendance is stretch goal */}
         <Card.Text>Attendance</Card.Text>
 
         {/* TODO: These two are for stretch goals */}
         <Card.Link href="#">Mark attendance</Card.Link>
-        <Card.Link href="#">Details</Card.Link>
+        <Card.Link href="#">View</Card.Link>
+        <Card.Link href={`/student/edit/${studentObj.firebaseKey}`}>Edit</Card.Link>
       </Card.Body>
     </Card>
   );
@@ -34,7 +36,8 @@ StudentCard.propTypes = {
   studentObj: PropTypes.shape({
     first_name: PropTypes.string,
     last_name: PropTypes.string,
-    grade_level: PropTypes.number,
+    grade_level: PropTypes.string,
     average_grade: PropTypes.number,
+    firebaseKey: PropTypes.string,
   }).isRequired,
 };

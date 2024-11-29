@@ -6,22 +6,18 @@ import { getSingleClassroom } from '../../../../api/classroomData';
 import ClassroomForm from '../../../../components/forms/ClassroomForm';
 
 export default function EditClassroom({ params }) {
-  const { firebaseKey } = params;
   const [editFormData, setEditFormData] = useState({});
+
+  const { firebaseKey } = params;
   // console.log(editFormData);
 
-  // TODO: GET single classroom by id, set form data. Pass in id in dependency array.
   useEffect(() => {
     getSingleClassroom(firebaseKey).then(setEditFormData);
-    // FIXME: Line 17 logs an empty object.
-    // console.log(editFormData);
+    // console.log("Params: ", params);
+    // console.log("FirebaseKey: ", firebaseKey);
   }, [firebaseKey]);
 
-  return (
-    <div>
-      <ClassroomForm obj={editFormData} />
-    </div>
-  );
+  return <ClassroomForm obj={editFormData} />;
 }
 
 EditClassroom.propTypes = {

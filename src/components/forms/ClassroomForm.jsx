@@ -21,8 +21,13 @@ export default function ClassroomForm({ obj = initialFormState }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(obj);
-    if (obj.firebaseKey) setFormInput(obj);
+    // console.log('Obj received: ', obj);
+    // console.log('Firebase Key: ', obj.firebaseKey);
+    // console.log(obj);
+    if (obj.firebaseKey) {
+      console.log('Updating formInput with obj: ', obj);
+      setFormInput(obj);
+    }
   }, [obj, user]);
 
   const handleChange = (e) => {

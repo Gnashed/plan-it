@@ -6,20 +6,19 @@ import { getSingleClassroom } from '../../../../api/classroomData';
 import ClassroomForm from '../../../../components/forms/ClassroomForm';
 
 export default function EditClassroom({ params }) {
-  const { firebaseKey } = params;
   const [editFormData, setEditFormData] = useState({});
-  console.log(editFormData);
 
-  // TODO: GET single classroom by id, set form data. Pass in id in dependency array.
+  const { firebaseKey } = params;
+  // console.log(editFormData);
+
   useEffect(() => {
     getSingleClassroom(firebaseKey).then(setEditFormData);
+    // console.log("Saved form data: ", editFormData);
+    // console.log("Params: ", params);
+    // console.log("FirebaseKey: ", firebaseKey);
   }, [firebaseKey]);
 
-  return (
-    <div>
-      <ClassroomForm obj={editFormData} />
-    </div>
-  );
+  return <ClassroomForm obj={editFormData} />;
 }
 
 EditClassroom.propTypes = {

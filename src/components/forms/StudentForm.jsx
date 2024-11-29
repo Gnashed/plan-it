@@ -1,23 +1,24 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useAuth } from '../../utils/context/authContext';
 import { getClassrooms } from '../../api/classroomData';
-// import { createStudent, updateStudent, getSingleStudent } from "../../api/studentData";
+import { createStudent, updateStudent } from '../../api/studentData';
 
 const initialFormState = {
-  selectedClassroom: '',
+  classroom_id: '',
   first_name: '',
   last_name: '',
   grade_level: '',
+  teacher_id: '',
 };
 
 export default function StudentForm({ obj = initialFormState }) {
-  // const router = useRouter();
+  const router = useRouter();
   const { user } = useAuth();
 
   const [formData, setFormData] = useState(obj);
@@ -25,20 +26,20 @@ export default function StudentForm({ obj = initialFormState }) {
 
   useEffect(() => {
     getClassrooms(user.uid).then(setClassrooms);
-  }, []);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     // Logic to detect if selectClassroom has a change in value. If so update the form with the new value.
-    if (name === 'selectedClassroom') {
+    if (name === 'classroom_id') {
       // Store the value if found.
       const selectedValue = classrooms.find((classroom) => classroom.firebaseKey === value);
       console.log(selectedValue.firebaseKey);
 
       setFormData((prevState) => ({
         ...prevState,
-        selectedClassroom: selectedValue.firebaseKey,
+        classroom_id: selectedValue.firebaseKey,
       }));
     } else {
       setFormData((prevState) => ({
@@ -51,7 +52,17 @@ export default function StudentForm({ obj = initialFormState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    if (obj.firebaseKey) {
+      updateStudent(formData).then(() => router.push(`/student/${obj.firebaseKey}`));
+      console.log(formData);
+    } else {
+      const payload = { ...formData, teacher_id: user.uid };
+      createStudent(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateStudent(patchPayload).then(() => router.push(`/student/${obj.firebaseKey}`));
+      });
+      // console.log(payload);
+    }
   };
 
   return (
@@ -63,7 +74,7 @@ export default function StudentForm({ obj = initialFormState }) {
 
         <Form.Group>
           <Form.Label>Select classroom</Form.Label>
-          <Form.Select onChange={handleChange} value={formData.selectedClassroom || ''} name="selectedClassroom" required>
+          <Form.Select onChange={handleChange} value={formData.classroom_id || ''} name="classroom_id" required>
             <option value="">... </option>
             {classrooms.map((classroom) => (
               <option key={classroom.firebaseKey} value={classroom.firebaseKey}>
@@ -121,10 +132,11 @@ export default function StudentForm({ obj = initialFormState }) {
 
 StudentForm.propTypes = {
   obj: PropTypes.shape({
-    selectClassroom: PropTypes.string,
+    classroom_id: PropTypes.string,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     grade_level: PropTypes.string,
+    teacher_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
 };

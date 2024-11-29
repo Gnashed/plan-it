@@ -18,7 +18,8 @@ export default function StudentCard({ studentObj }) {
         </Card.Title>
 
         <Card.Text>Grade {studentObj.grade_level}</Card.Text>
-        <Card.Text>Average Grade {studentObj.average_grade}</Card.Text>
+        {/* TODO: Stretch Goal */}
+        <Card.Text>Average Grade</Card.Text>
         {/* TODO: Attendance is stretch goal */}
         <Card.Text>Attendance</Card.Text>
 

@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import StudentCard from '../../../components/students/StudentCard';
-import { getStudents } from '../../../api/studentData';
+import { getStudentsByClassroomId } from '../../../api/studentData';
 
 export default function ViewClassroom({ params }) {
   const { firebaseKey } = params;
   const [students, setStudents] = useState([]);
 
   const getAllStudents = () => {
-    getStudents(firebaseKey).then(setStudents);
+    getStudentsByClassroomId(firebaseKey).then(setStudents);
   };
 
   useEffect(() => {

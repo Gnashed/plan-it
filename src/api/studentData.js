@@ -2,7 +2,27 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getStudents = (classroomId) =>
+const getAllStudents = (teacherId) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/student.json?orderBy="teacher_id"&equalTo="${teacherId}"`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+        // console.warn(data);
+      })
+      .catch(reject);
+  });
+
+const getStudentsByClassroomId = (classroomId) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/student.json?orderBy="classroom_id"&equalTo="${classroomId}"`, {
       method: 'GET',
@@ -70,4 +90,4 @@ const updateStudent = (payload) =>
       .catch(reject);
   });
 
-export { getStudents, getSingleStudent, createStudent, updateStudent };
+export { getAllStudents, getStudentsByClassroomId, getSingleStudent, createStudent, updateStudent };

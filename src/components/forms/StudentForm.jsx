@@ -26,7 +26,8 @@ export default function StudentForm({ obj = initialFormState }) {
 
   useEffect(() => {
     getClassrooms(user.uid).then(setClassrooms);
-  }, [obj, user]);
+    if (obj.firebaseKey) setFormData(obj);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -123,7 +124,7 @@ export default function StudentForm({ obj = initialFormState }) {
         {/* Submit button */}
 
         <Button type="submit" variant="primary">
-          Add student
+          {formData.firebaseKey ? 'Update' : 'Add'} student
         </Button>
       </Form>
     </div>

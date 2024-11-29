@@ -51,14 +51,7 @@ const getSingleStudent = (firebaseKey) =>
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          resolve(data);
-        } else {
-          resolve([]);
-        }
-        // console.warn(data);
-      })
+      .then((data) => resolve(data))
       .catch(reject);
   });
 

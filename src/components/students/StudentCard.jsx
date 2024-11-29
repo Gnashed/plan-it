@@ -25,7 +25,7 @@ export default function StudentCard({ studentObj }) {
 
         {/* TODO: These two are for stretch goals */}
         <Card.Link href="#">Mark attendance</Card.Link>
-        <Card.Link href="#">Details</Card.Link>
+        <Card.Link href="#">View</Card.Link>
         <Card.Link href={`/student/edit/${studentObj.firebaseKey}`}>Edit</Card.Link>
       </Card.Body>
     </Card>

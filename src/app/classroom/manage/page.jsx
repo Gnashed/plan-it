@@ -22,10 +22,9 @@ export default function Page() {
     <div className="d-flex flex-column my-4 text-center">
       <h1 className="my-3">Manage Classrooms</h1>
 
-      {/* TODO: Render Classroom components dynamically. */}
       <div className="d-flex flex-row flex-wrap justify-content-center">
         {classrooms.map((classroom) => (
-          <ClassroomCard key={classroom.firebaseKey} classroomObj={classroom} />
+          <ClassroomCard key={classroom.firebaseKey} classroomObj={classroom} onUpdate={getAllClassrooms} />
         ))}
       </div>
     </div>

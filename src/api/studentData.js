@@ -83,4 +83,17 @@ const updateStudent = (payload) =>
       .catch(reject);
   });
 
-export { getAllStudents, getStudentsByClassroomId, getSingleStudent, createStudent, updateStudent };
+const deleteSingleStudent = (firebaseKey) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/student/${firebaseKey}.json`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json)
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+export { getAllStudents, getStudentsByClassroomId, getSingleStudent, createStudent, updateStudent, deleteSingleStudent };

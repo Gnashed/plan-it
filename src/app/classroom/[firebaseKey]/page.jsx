@@ -9,12 +9,12 @@ export default function ViewClassroom({ params }) {
   const { firebaseKey } = params;
   const [students, setStudents] = useState([]);
 
-  const getAllStudents = () => {
+  const fetchAllStudents = () => {
     getStudentsByClassroomId(firebaseKey).then(setStudents);
   };
 
   useEffect(() => {
-    getAllStudents();
+    fetchAllStudents();
   }, []);
 
   return (
@@ -24,7 +24,7 @@ export default function ViewClassroom({ params }) {
       <div className="d-flex flex-row flex-wrap my-5 justify-content-center">
         {/* TODO: Render dynamically */}
         {students.map((student) => (
-          <StudentCard key={student.firebaseKey} studentObj={student} />
+          <StudentCard key={student.firebaseKey} studentObj={student} onUpdate={fetchAllStudents} />
         ))}
       </div>
     </div>

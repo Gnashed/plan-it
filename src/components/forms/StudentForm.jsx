@@ -60,7 +60,7 @@ export default function StudentForm({ obj = initialFormState }) {
       const payload = { ...formData, teacher_id: user.uid };
       createStudent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateStudent(patchPayload).then(() => router.push(`/student/${obj.firebaseKey}`));
+        updateStudent(patchPayload).then(() => router.push(`/student`));
       });
       // console.log(payload);
     }

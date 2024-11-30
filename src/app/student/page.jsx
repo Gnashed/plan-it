@@ -9,8 +9,12 @@ export default function ViewAllStudents() {
   const [students, setStudents] = useState([]);
   const { user } = useAuth();
 
-  useEffect(() => {
+  const fetchAllStudents = () => {
     getAllStudents(user.uid).then(setStudents);
+  };
+
+  useEffect(() => {
+    fetchAllStudents();
   }, []);
 
   return (
@@ -19,7 +23,7 @@ export default function ViewAllStudents() {
 
       <div className="d-flex flex-row flex-wrap justify-content-center my-4">
         {students.map((student) => (
-          <StudentCard key={student.firebaseKey} studentObj={student} />
+          <StudentCard key={student.firebaseKey} studentObj={student} onUpdate={fetchAllStudents} />
         ))}
       </div>
     </div>

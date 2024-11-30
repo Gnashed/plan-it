@@ -1,8 +1,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
+import { deleteSingleStudent } from '../../api/studentData';
 
-export default function StudentCard({ studentObj }) {
+export default function StudentCard({ studentObj, onUpdate }) {
+  const deleteStudent = () => {
+    if (window.confirm(`Are you sure you want to remove ${studentObj.first_name} ${studentObj.last_name} from this class?`)) {
+      deleteSingleStudent(studentObj.firebaseKey).then(() => {
+        onUpdate();
+      });
+    }
+  };
+
   return (
     <Card
       style={{
@@ -24,9 +33,10 @@ export default function StudentCard({ studentObj }) {
         <Card.Text>Attendance</Card.Text>
 
         {/* TODO: These two are for stretch goals */}
-        <Card.Link href="#">Mark attendance</Card.Link>
+        <Card.Link href="#">Attendance</Card.Link>
         <Card.Link href="#">View</Card.Link>
         <Card.Link href={`/student/edit/${studentObj.firebaseKey}`}>Edit</Card.Link>
+        <Card.Link onClick={deleteStudent}>Delete</Card.Link>
       </Card.Body>
     </Card>
   );
@@ -40,4 +50,5 @@ StudentCard.propTypes = {
     average_grade: PropTypes.number,
     firebaseKey: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

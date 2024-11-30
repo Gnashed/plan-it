@@ -24,7 +24,7 @@ export default function Page() {
 
       <div className="d-flex flex-row flex-wrap justify-content-center">
         {classrooms.map((classroom) => (
-          <ClassroomCard key={classroom.firebaseKey} classroomObj={classroom} />
+          <ClassroomCard key={classroom.firebaseKey} classroomObj={classroom} onUpdate={getAllClassrooms} />
         ))}
       </div>
     </div>

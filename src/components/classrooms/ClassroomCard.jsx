@@ -3,16 +3,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import deleteClassroomStudentRelationship from '../../api/mergeData';
 
-export default function ClassroomCard({ classroomObj }) {
-  const router = useRouter();
+export default function ClassroomCard({ classroomObj, onUpdate }) {
+  // const router = useRouter();
 
   const deleteClassroomFromView = () => {
     if (window.confirm(`Are you sure you want to delete ${classroomObj.classroom_name}? Deleting this classroom will also delete the students.`)) {
       deleteClassroomStudentRelationship(classroomObj.firebaseKey).then(() => {
-        router.push(`/classroom/manage/`);
+        // router.push(`/classroom/manage/`);
+        onUpdate();
       });
     }
   };
@@ -39,4 +40,5 @@ ClassroomCard.propTypes = {
     grade_level: PropTypes.number,
     firebaseKey: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

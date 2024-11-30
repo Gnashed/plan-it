@@ -63,4 +63,17 @@ const updateClassroom = (payload) =>
       .catch(reject);
   });
 
-export { getClassrooms, getSingleClassroom, createClassroom, updateClassroom };
+const deleteClassroom = (classroomId) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/classroom/${classroomId}.json`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json)
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+export { getClassrooms, getSingleClassroom, createClassroom, updateClassroom, deleteClassroom };

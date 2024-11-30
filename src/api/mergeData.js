@@ -11,7 +11,7 @@ const deleteClassroomStudentRelationship = (firebaseKey) =>
           deleteClassroom(firebaseKey).then(resolve);
         });
       })
-      .then(reject);
+      .catch(reject);
   });
 
 export default deleteClassroomStudentRelationship;

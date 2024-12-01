@@ -22,7 +22,7 @@ export default function StudentCard({ studentObj, onUpdate }) {
       className="text-center m-3"
     >
       <Card.Body>
-        <Card.Title>
+        <Card.Title id="student-name">
           {studentObj.first_name} {studentObj.last_name}
         </Card.Title>
 

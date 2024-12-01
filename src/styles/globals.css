@@ -1,4 +1,29 @@
 body {
-  background: black;
+  background: #9E55F2;
   color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Classroom Card */
+#classroom-name {
+  color: #F2FF49;
+}
+
+/* Student Card */
+#student-name {
+  color: #F2FF49;
+}
+
+/* Dashboard */
+#dashboard a {
+  color: white;
+}
+
+/* Navbar */
+#navbar-brand {
+  font-weight: 600;
+  color: #F2FF49;
 }

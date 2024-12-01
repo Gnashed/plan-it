@@ -68,7 +68,7 @@ export default function StudentForm({ obj = initialFormState }) {
 
   return (
     <div className="d-flex flex-column justify-content-center text-center my-5" style={{ backgroundColor: '#222' }}>
-      <h1>Student Form</h1>
+      <h1>{formData.firebaseKey ? 'Update ' : 'Add a '}student</h1>
 
       <Form onSubmit={handleSubmit}>
         {/* SELECT Classroom */}

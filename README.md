@@ -1,4 +1,4 @@
-# Plan-it!
+<h1>Plan-it!</h1>
 
 [See Live Demo of this Template](https://drt-next-js-template-app-router.netlify.app/)
 
@@ -28,16 +28,24 @@ Stretch Features:
 - Weekly agenda.
 
 ## Screenshots
+<img width="680" alt="Screenshot 2024-12-03 at 12 34 29 PM" src="https://github.com/user-attachments/assets/04174687-a868-4a8a-a512-c294159cd8be">
 
+<img width="680" alt="Screenshot 2024-12-03 at 12 35 19 PM" src="https://github.com/user-attachments/assets/8ed81db9-8a05-4e63-ae48-f72cd7d6a52d">
+
+<img width="680" alt="Screenshot 2024-12-03 at 12 53 18 PM" src="https://github.com/user-attachments/assets/504d4e0d-30a6-4e6b-8f04-7b1b2f48debc">
+
+<img width="680" alt="Screenshot 2024-12-03 at 12 53 44 PM" src="https://github.com/user-attachments/assets/618b3ec6-8944-4433-aa3d-b368714b6219">
+
+<img width="680" alt="Screenshot 2024-12-03 at 12 54 30 PM" src="https://github.com/user-attachments/assets/04cd27f2-f5eb-451f-9ea3-39287e51c950">
 
 ## Wireframe + Deployed Project + Project Board
 [Figma wireframe](https://www.figma.com/design/nMCpiAB6KIoJ1qiKmg6lW4/plan-it!?node-id=844-27&t=6X6siHIfaxrDnEtB-1)
 
-[Link to deployed project using Netlify](###)
+[Link to deployed project (Netlify)](###)
 
 [GitHub Project board](https://github.com/users/Gnashed/projects/5/views/1)
 
 ___
 
 ## Loom Video
-[Link to Loom video demostrating the current features](https://www.loom.com/share/43ea78d813b94565997228a4888d998c?sid=0a8317fe-0db5-45ec-9d1c-150f9322a400)
+[Link to Loom video demostrating current features](https://www.loom.com/share/43ea78d813b94565997228a4888d998c?sid=0a8317fe-0db5-45ec-9d1c-150f9322a400)

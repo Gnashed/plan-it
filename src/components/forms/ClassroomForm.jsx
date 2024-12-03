@@ -47,7 +47,7 @@ export default function ClassroomForm({ obj = initialFormState }) {
       const payload = { ...formInput, teacher_id: user.uid };
       createClassroom(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateClassroom(patchPayload).then(() => router.push(`/classroom/manage/`));
+        updateClassroom(patchPayload).then(() => router.push(`/classroom/${patchPayload.firebaseKey}`));
       });
     }
 

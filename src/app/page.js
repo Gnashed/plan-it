@@ -33,7 +33,7 @@ function Home() {
     >
       <h1 className="mb-5">Welcome, {user.displayName}!</h1>
 
-      <div className="container row">
+      <div className="container row" id="dashboard">
         <div className="col">
           <Link href="/classroom/new" passHref>
             Create classroom
@@ -58,7 +58,7 @@ function Home() {
                 <Dropdown.Menu>
                   {classrooms.map((classroom) => (
                     <Dropdown.Item key={classroom.firebaseKey}>
-                      <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.subject}</Link>
+                      <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.classroom_name}</Link>
                     </Dropdown.Item>
                   ))}
                 </Dropdown.Menu>

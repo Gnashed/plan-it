@@ -6,7 +6,7 @@
   "last_name":"Larking",
   "grade_level":5,
   "classroom_id":"-OCdhp_HzyrJEBi30uq5",
-  "teacher_id": ""
+  "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
 },
 "-OCdrCbJOOGyDzCSs42B":
   {
@@ -15,7 +15,7 @@
     "last_name":"Merill",
     "grade_level":5,
     "classroom_id":"-OCdhp_HzyrJEBi30uq5",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbKx6eLbHBDyUhm":
   {
@@ -24,7 +24,7 @@
     "last_name":"Foard",
     "grade_level":5,
     "classroom_id":"-OCdhp_HzyrJEBi30uq5",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbMJ2jTh0SrLVgG":
   {
@@ -33,7 +33,7 @@
     "last_name":"Schops",
     "grade_level":10,
     "classroom_id":"-OCdhp_HzyrJEBi30uq6",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbOg3X-ej7UsFK0":
   {
@@ -42,7 +42,7 @@
     "last_name":"Noakes",
     "grade_level":10,
     "classroom_id":"-OCdhp_HzyrJEBi30uq6",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbPGP8quf-cpGWp":
   {
@@ -51,7 +51,7 @@
     "last_name":"Janjusevic",
     "grade_level":10,
     "classroom_id":"-OCdhp_HzyrJEBi30uq6",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbQw_1BBV_dE6qY":
   {
@@ -60,7 +60,7 @@
     "last_name":"Jugging",
     "grade_level":10,
     "classroom_id":"-OCdhp_HzyrJEBi30uq6",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbS3qIQ-6imu9_V":
   {
@@ -69,7 +69,7 @@
     "last_name":"Jowett",
     "grade_level":9,
     "classroom_id":"-OCdhp_JmbDGWSUYn9Fw",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbTXWcnEpZjuQqo":
   {
@@ -78,15 +78,15 @@
     "last_name":"Keilty",
     "grade_level":9,
     "classroom_id":"-OCdhp_JmbDGWSUYn9Fw",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   },
 "-OCdrCbU3Ff2nnlSjqMK":
   {
-    "firebaseKey":"-OCdrCbU3Ff2nnlSjqMK",,
+    "firebaseKey":"-OCdrCbU3Ff2nnlSjqMK",
     "first_name":"Land",
     "last_name":"Ehrat",
     "grade_level":9,
     "classroom_id":"-OCdhp_JmbDGWSUYn9Fw",
-    "teacher_id": ""
+    "teacher_id": "bmXX6EZQimPf9vkxqr0BiFCfc553"
   }
 }

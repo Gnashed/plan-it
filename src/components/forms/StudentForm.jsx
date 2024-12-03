@@ -60,7 +60,7 @@ export default function StudentForm({ obj = initialFormState }) {
       const payload = { ...formData, teacher_id: user.uid };
       createStudent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateStudent(patchPayload).then(() => router.push(`/student`));
+        updateStudent(patchPayload).then(() => router.push(`/classroom/${payload.classroom_id}`));
       });
       // console.log(payload);
     }
@@ -68,7 +68,7 @@ export default function StudentForm({ obj = initialFormState }) {
 
   return (
     <div className="d-flex flex-column justify-content-center text-center my-5" style={{ backgroundColor: '#222' }}>
-      <h1>Student Form</h1>
+      <h1>{formData.firebaseKey ? 'Update ' : 'Add a '}student</h1>
 
       <Form onSubmit={handleSubmit}>
         {/* SELECT Classroom */}

@@ -1,29 +1,45 @@
-# NextJS with Firebase Auth App Router Template
+# Plan-it!
 
 [See Live Demo of this Template](https://drt-next-js-template-app-router.netlify.app/)
 
-## Topics
-- [Get Started](#get-started)
-- [Starting the Project](#starting-the-project)
-- [Deploying on Netlify](#deploying-on-netlify)
+## Overview
+Welcome to Plan-it! This web app was designed to solve a common problem that most teachers around the world deal with day to day - managing their classrooms. 
+
+A lot of teachers rely on a notebook to keep track of their students which may be efficient for some, but for most this can lead to all sorts of problems. With Plan-it!, users will have the tools they need to better manage their classrooms by having the ability to view their classrooms, add or transfer students, track attendance, and more. 
 ___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
+## Is Plan-it! for me?
 
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
+Not every teacher is the same. Some may only teach for a couple periods, some may teach multiple period throughout the day multiple times a week. For those that use notebook/pen and paper, this can be inefficient and stressful especially if you were to lose your notebooks, lesson planners, etc.
 
-## Starting the Project
-1. Create a Firebase project and set up authentication. Use [these videos](https://vimeo.com/showcase/codetracker-firebase) as a refresher if needed.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
+Plan-it! are for those teachers that wants to take better controll of their classroom using modern solutions. You can use any browser on any computer and mobile device to enjoy the features of this web app.
+
+
+## Features
+
+MVP Features:
+- Ability to create, edit, and delete multiple classrooms and add students. Both represented as cards that  shows the information you need.
+- Transfer students to different classes or remove them from a class.
+
+Stretch Features:
+- Grade book that allows users to keep track of students' grades based on a few categories (homework, classwork, etc.)
+- Ability to search for students and classrooms on relevant pages.
+- Attendance log.
+- Weekly agenda.
+
+## Screenshots
+
+
+## Wireframe + Deployed Project + Project Board
+[Figma wireframe](https://www.figma.com/design/nMCpiAB6KIoJ1qiKmg6lW4/plan-it!?node-id=844-27&t=6X6siHIfaxrDnEtB-1)
+
+[Link to deployed project using Netlify](###)
+
+[GitHub Project board](https://github.com/users/Gnashed/projects/5/views/1)
+
+___
+
+## Loom Video
 
 ### Deploying on Netlify
 Netlify will automatically detect your project and prepopulate the settings, but should something go wrong and it does not, here are the commands:
@@ -38,9 +54,3 @@ Netlify will automatically detect your project and prepopulate the settings, but
 
 - Update Firebase URL Settings
     - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.

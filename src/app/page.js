@@ -58,7 +58,7 @@ function Home() {
                 <Dropdown.Menu>
                   {classrooms.map((classroom) => (
                     <Dropdown.Item key={classroom.firebaseKey}>
-                      <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.subject}</Link>
+                      <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.classroom_name}</Link>
                     </Dropdown.Item>
                   ))}
                 </Dropdown.Menu>

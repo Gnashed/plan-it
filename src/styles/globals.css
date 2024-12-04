@@ -42,3 +42,16 @@ a {
   border-radius: 50%;
   background-color: #222;
 }
+
+/* Sign in Page */
+#logo-signInPage {
+  font-size: 3rem;
+}
+
+svg {
+  margin-left: 0.50rem;
+}
+
+#signInButton {
+  border: 0.25px solid white;
+}

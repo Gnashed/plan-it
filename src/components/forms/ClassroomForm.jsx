@@ -55,7 +55,7 @@ export default function ClassroomForm({ obj = initialFormState }) {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center text-center my-5">
+    <div className="d-flex flex-column justify-content-center text-center my-5 w-75">
       <h1>Classroom Form</h1>
 
       <Form className="my-5" onSubmit={handleSubmit}>

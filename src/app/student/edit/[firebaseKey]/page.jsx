@@ -14,7 +14,11 @@ export default function EditStudent({ params }) {
     getSingleStudent(firebaseKey).then(setEditFormData);
   }, [firebaseKey]);
 
-  return <StudentForm obj={editFormData} />;
+  return (
+    <div className="d-flex justify-content-center m-5" style={{ backgroundColor: '#222' }}>
+      <StudentForm obj={editFormData} />
+    </div>
+  );
 }
 
 EditStudent.propTypes = {

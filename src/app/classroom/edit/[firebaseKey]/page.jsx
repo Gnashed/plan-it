@@ -18,7 +18,11 @@ export default function EditClassroom({ params }) {
     // console.log("FirebaseKey: ", firebaseKey);
   }, [firebaseKey]);
 
-  return <ClassroomForm obj={editFormData} />;
+  return (
+    <div className="d-flex justify-content-center m-5" style={{ backgroundColor: '#222' }}>
+      <ClassroomForm obj={editFormData} />
+    </div>
+  );
 }
 
 EditClassroom.propTypes = {

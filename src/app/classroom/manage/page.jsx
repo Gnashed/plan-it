@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ClassroomCard from '../../../components/classrooms/ClassroomCard';
+import AddButton from '../../../components/buttons/AddButton';
 import { getClassrooms } from '../../../api/classroomData';
 import { useAuth } from '../../../utils/context/authContext';
 
@@ -27,6 +28,8 @@ export default function Page() {
           <ClassroomCard key={classroom.firebaseKey} classroomObj={classroom} onUpdate={getAllClassrooms} />
         ))}
       </div>
+
+      <AddButton buttonProp="classroom" />
     </div>
   );
 }

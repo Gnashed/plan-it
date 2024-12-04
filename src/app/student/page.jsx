@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import StudentCard from '../../components/students/StudentCard';
+import AddButton from '../../components/buttons/AddButton';
 import { useAuth } from '../../utils/context/authContext';
 import { getAllStudents } from '../../api/studentData';
 
@@ -26,6 +27,8 @@ export default function ViewAllStudents() {
           <StudentCard key={student.firebaseKey} studentObj={student} onUpdate={fetchAllStudents} />
         ))}
       </div>
+
+      <AddButton buttonProp="student" />
     </div>
   );
 }

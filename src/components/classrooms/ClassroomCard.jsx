@@ -19,7 +19,7 @@ export default function ClassroomCard({ classroomObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', backgroundColor: '#222', color: '#fff' }} className="m-3">
+    <Card style={{ width: '40rem', backgroundColor: '#222', color: '#fff' }} className="m-3">
       <Card.Body>
         <Card.Title id="classroom-name">{classroomObj.classroom_name}</Card.Title>
         <Card.Text>Subject: {classroomObj.subject}</Card.Text>

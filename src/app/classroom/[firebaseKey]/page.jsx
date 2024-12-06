@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import AddButton from '../../../components/buttons/AddButton';
 import StudentCard from '../../../components/students/StudentCard';
 import { getStudentsByClassroomId } from '../../../api/studentData';
 
@@ -21,6 +22,8 @@ export default function ViewClassroom({ params }) {
     <div className="d-flex flex-column align-items-center">
       <h1 className="text-center my-5">Classroom</h1>
       <p>It&apos;s looking pretty empty here. Ready to add a student?</p>
+
+      <AddButton buttonProp="student" />
     </div>
   ) : (
     <div className="d-flex flex-column">

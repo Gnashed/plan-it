@@ -53,5 +53,6 @@ svg {
 }
 
 #signInButton {
-  border: 0.25px solid white;
+  background-color: #222;
+  font-weight: 200;
 }

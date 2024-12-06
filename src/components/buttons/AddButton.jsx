@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 export default function AddButton({ buttonProp }) {
   return (
     <div className="d-flex justify-content-end m-5">
-      <Link href={`/${buttonProp}/new`} id="add-classroom-btn" title="Add a classroom" passHref>
+      <Link href={`/${buttonProp}/new`} id="add-classroom-btn" title={`Add a ${buttonProp}`} className="text-center" passHref>
         +
       </Link>
     </div>

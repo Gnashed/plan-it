@@ -21,6 +21,16 @@ a {
 #dashboard a {
   color: white;
 }
+#dashboard {
+  /* border: 2px solid white; */
+  height: 10rem;
+}
+
+.dashboard-columns {
+  /* border: 1px solid black; */
+  width: 5rem;
+  height: 5rem;
+}
 
 /* Navbar */
 #navbar-brand {

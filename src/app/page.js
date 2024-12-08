@@ -21,7 +21,6 @@ function Home() {
     getClassrooms(user.uid).then(setClassrooms);
   }, []);
 
-  // TODO: Refactor to render either a form if user doesn't have any created classrooms or render the dashboard.
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -33,57 +32,68 @@ function Home() {
     >
       <h1 className="mb-5">Welcome, {user.displayName}!</h1>
 
-      <div className="container row" id="dashboard">
-        <div className="col">
+      <div className="d-flex flex-wrap align-items-center" id="dashboard">
+        <div className="col dashboard-columns">
           <Link href="/classroom/new" passHref>
             Create classroom
           </Link>
         </div>
-        <div className="col">
+
+        <div className="col dashboard-columns">
           <Button variant="primary" onClick={handleShow}>
             View classroom
           </Button>
 
-          <Modal show={show} onHide={handleClose} data-bs-theme="dark">
-            <Modal.Header>
-              <Modal.Title>Select a classroom to view</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {/* TODO: Dropdown goes here */}
-              <Dropdown data-bs-theme="dark">
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Select ...
-                </Dropdown.Toggle>
+          <div className="col dashboard-columns">
+            <Modal show={show} onHide={handleClose} data-bs-theme="dark">
+              <Modal.Header>
+                <Modal.Title>Select a classroom to view</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                {/* TODO: Dropdown goes here */}
+                <Dropdown data-bs-theme="dark">
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Select ...
+                  </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  {classrooms.map((classroom) => (
-                    <Dropdown.Item key={classroom.firebaseKey}>
-                      <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.classroom_name}</Link>
-                    </Dropdown.Item>
-                  ))}
-                </Dropdown.Menu>
-              </Dropdown>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
+                  <Dropdown.Menu>
+                    {classrooms.map((classroom) => (
+                      <Dropdown.Item key={classroom.firebaseKey}>
+                        <Link href={`/classroom/${classroom.firebaseKey}`}>{classroom.classroom_name}</Link>
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
         </div>
-        <div className="col">
+
+        <div className="col dashboard-columns">
           <Link href="/classroom/manage" passHref>
             Manage classrooms
           </Link>
         </div>
-        <div className="col">
+
+        <div className="col dashboard-columns">
           <Link href="/student/new" passHref>
-            Add a student
+            Add student
           </Link>
         </div>
-        <div className="col">
+
+        <div className="col dashboard-columns">
           <Link href="/student" passHref>
-            View all students
+            All students
+          </Link>
+        </div>
+        <div className="col dashboard-columns">
+          <Link href="/grades" passHref>
+            View grades
           </Link>
         </div>
       </div>

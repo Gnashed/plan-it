@@ -1,0 +1,92 @@
+{
+  "-ODbMRF1hSzbMlqceHPa": {
+    "firebaseKey":"-ODbMRF1hSzbMlqceHPa",
+    "student_id":"-OCdrCbMJ2jTh0SrLVgG",
+    "classroom_id":"-OCdhp_HzyrJEBi30uq6",
+    "assignment_category": "Homework",
+    "assignment_name":"Test HW Assignment",
+    "score":88,
+    "date":"10/11/2024"
+  },
+  "-ODbMRF1hSzbMlqceHPb": {
+    "firebaseKey":"-ODbMRF1hSzbMlqceHPb",
+    "student_id":"-OCdrCbOg3X-ej7UsFK0",
+    "classroom_id":"-OCdhp_HzyrJEBi30uq6",
+    "assignment_category": "Classwork",
+    "assignment_name":"Test CW Assignment",
+    "score":90,
+    "date":"11/18/2024"
+  },
+  "-ODbMRF22krbaNLjCpwp": {
+    "firebaseKey":"-ODbMRF22krbaNLjCpwp",
+    "student_id":"-OCdrCbPGP8quf-cpGWp",
+    "classroom_id":"-OCdhp_HzyrJEBi30uq6",
+    "assignment_category": "Homework",
+    "assignment_name":"Test HW Assignment",
+    "score":87,
+    "date":"11/10/2024"
+  },
+  "-ODbMRF3U43NAnCsVVkm": {
+    "firebaseKey":"-ODbMRF3U43NAnCsVVkm",
+    "student_id":"-OCdrCbQw_1BBV_dE6qY",
+    "classroom_id":"-OCdhp_HzyrJEBi30uq6",
+    "assignment_category": "Quiz",
+    "assignment_name":"Test Quiz",
+    "score":95,
+    "date":"11/9/2024"
+  },
+  "-ODbMRF4onuXhpXS0lSj": {
+    "firebaseKey":"-ODbMRF4onuXhpXS0lSj",
+    "student_id":"",
+    "classroom_id":"",
+    "assignment_category": "",
+    "assignment_name":"",
+    "score":87,
+    "date":"11/21/2024"
+  },
+  "-ODbMRF5SxE6eiH09ziy": {
+    "firebaseKey":"-ODbMRF5SxE6eiH09ziy",
+    "student_id":"",
+    "classroom_id":"",
+    "assignment_category": "",
+    "assignment_name":"",
+    "score":44,
+    "date":"11/20/2024"
+  },
+  "-ODbMRF6b58GKdJueMVY": {
+    "firebaseKey":"-ODbMRF6b58GKdJueMVY",
+    "student_id":"",
+    "classroom_id":"",
+    "assignment_category": "",
+    "assignment_name":"",
+    "score":73,
+    "date":"12/4/2024"
+  },
+  "-ODbMRF6b58GKdJueMVZ": {
+    "firebaseKey":"-ODbMRF6b58GKdJueMVZ",
+    "student_id":"",
+    "classroom_id":"",
+    "assignment_category": "",
+    "assignment_name":"",
+    "score":76,
+    "date":"12/7/2024"
+  },
+  "-ODbMRF7VvNSdEqko5jX": {
+    "firebaseKey":"-ODbMRF7VvNSdEqko5jX",
+    "student_id":"",
+    "classroom_id":"",
+    "assignment_category": "",
+    "assignment_name":"",
+    "score":5,
+    "date":"11/24/2024"
+  },
+  "-ODbMRF7VvNSdEqko5jY": {
+    "firebaseKey":"-ODbMRF7VvNSdEqko5jY",
+    "student_id":"",
+    "classroom_id":"",
+    "assignment_category": "",
+    "assignment_name":"",
+    "score":19,
+    "date":"10/31/2024"
+  }
+}

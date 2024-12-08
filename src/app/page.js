@@ -82,13 +82,18 @@ function Home() {
 
         <div className="col dashboard-columns">
           <Link href="/student/new" passHref>
-            Add a student
+            Add student
           </Link>
         </div>
 
         <div className="col dashboard-columns">
           <Link href="/student" passHref>
-            View all students
+            All students
+          </Link>
+        </div>
+        <div className="col dashboard-columns">
+          <Link href="/grades" passHref>
+            View grades
           </Link>
         </div>
       </div>

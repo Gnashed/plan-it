@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import AddButton from '../../../components/buttons/AddButton';
+import AddButton from '../../../components/buttons/AddButton';
 import { getGrades } from '../../../api/gradesData';
 
 export default function GradeBook({ params }) {
@@ -34,7 +34,6 @@ export default function GradeBook({ params }) {
           {/* Student's grades */}
           {grades.map((grade) => (
             <div className="row student-grades" key={grade.firebaseKey}>
-              {/* TODO: Figure out how to render the student name */}
               <p className="col">
                 {grade.student_first_name} {grade.student_last_name}
               </p>
@@ -48,7 +47,7 @@ export default function GradeBook({ params }) {
         </div>
       </div>
 
-      {/* <AddButton buttonProp="grades" /> */}
+      <AddButton buttonProp="grades" />
     </div>
   );
 }

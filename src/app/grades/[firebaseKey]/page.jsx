@@ -22,7 +22,7 @@ export default function GradeBook({ params }) {
         {/* TODO: Grid setup for grade book */}
         <div className="container text-center">
           {/* Column headers */}
-          <div className="row mt-5">
+          <div className="row column-headers mt-5">
             <p className="col">Student</p>
             <p className="col">Homework</p>
             <p className="col">Classwork</p>
@@ -33,9 +33,11 @@ export default function GradeBook({ params }) {
 
           {/* Student's grades */}
           {grades.map((grade) => (
-            <div className="row student-grades">
+            <div className="row student-grades" key={grade.firebaseKey}>
               {/* TODO: Figure out how to render the student name */}
-              <p className="col">{grade.student_id}</p>
+              <p className="col">
+                {grade.student_first_name} {grade.student_last_name}
+              </p>
               <p className="col">--</p>
               <p className="col">--</p>
               <p className="col">--</p>

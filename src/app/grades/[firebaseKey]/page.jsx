@@ -18,15 +18,19 @@ export default function GradeBook({ params }) {
       let homeworkAccumulator = 0;
       let classworkAccumulator = 0;
       let quizAccumulator = 0;
+      let projectAccumulator = 0;
+      let examAccumulator = 0;
 
       // Filter the results based on assignment category
       const filterByHomework = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Homework');
       const filterByClasswork = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Classwork');
       const filterByQuizzes = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Quiz');
+      const filterByProjects = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Project');
+      const filterByExams = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Exam');
 
-      console.warn('Grades for homework: ', filterByHomework);
-      console.warn('Grades for classwork: ', filterByClasswork);
-      console.warn('Grades for quizzes: ', filterByQuizzes);
+      // console.warn('Grades for homework: ', filterByHomework);
+      // console.warn('Grades for classwork: ', filterByClasswork);
+      // console.warn('Grades for quizzes: ', filterByQuizzes);
 
       // TODO: Loop through each filtered array to find the scores, add the scores, then render the averages.
 
@@ -48,6 +52,20 @@ export default function GradeBook({ params }) {
         if (gradeObj.score) {
           quizAccumulator += gradeObj.score;
           gradeObj.quiz_average = quizAccumulator; // eslint-disable-line no-param-reassign
+          copyOfGrades.push(gradeObj);
+        }
+      });
+      filterByProjects.forEach((gradeObj) => {
+        if (gradeObj.score) {
+          examAccumulator += gradeObj.score;
+          gradeObj.exam_average = examAccumulator; // eslint-disable-line no-param-reassign
+          copyOfGrades.push(gradeObj);
+        }
+      });
+      filterByExams.forEach((gradeObj) => {
+        if (gradeObj.score) {
+          projectAccumulator += gradeObj.score;
+          gradeObj.project_average = projectAccumulator; // eslint-disable-line no-param-reassign
           copyOfGrades.push(gradeObj);
         }
       });
@@ -83,11 +101,11 @@ export default function GradeBook({ params }) {
               <p className="col">
                 {grade.student_first_name} {grade.student_last_name}
               </p>
-              <p className="col">--{grade.homework_average}</p>
-              <p className="col">--{grade.classwork_average}</p>
-              <p className="col">--{grade.quiz_average}</p>
-              <p className="col">--</p>
-              <p className="col">--</p>
+              <p className="col">{grade.homework_average === undefined ? '--' : grade.homework_average}</p>
+              <p className="col">{grade.classwork_average === undefined ? '--' : grade.classwork_average}</p>
+              <p className="col">{grade.quiz_average === undefined ? '--' : grade.quiz_average}</p>
+              <p className="col">{grade.project_average === undefined ? '--' : grade.project_average}</p>
+              <p className="col">{grade.exam_average === undefined ? '--' : grade.exam_average}</p>
             </div>
           ))}
         </div>

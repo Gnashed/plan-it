@@ -8,104 +8,72 @@ import { getGrades } from '../../../api/gradesData';
 export default function GradeBook({ params }) {
   const { firebaseKey } = params;
 
-  const [grades, setGrades] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    // getGrades(firebaseKey).then(setGrades);
+    getGrades(firebaseKey).then((gradesData) => {
+      // Extract unique assignment categories
+      const categoriesSet = [...new Set(gradesData.map((grade) => grade.assignment_category))];
+      setCategories(categoriesSet);
+      console.log('Categories: ', categoriesSet);
 
-    getGrades(firebaseKey).then((gradesArray) => {
-      const copyOfGrades = []; // Need this to concat all filtered arrays that includes the new properties that holds the averages.
-      let homeworkAccumulator = 0;
-      let classworkAccumulator = 0;
-      let quizAccumulator = 0;
-      let projectAccumulator = 0;
-      let examAccumulator = 0;
-
-      // Filter the results based on assignment category
-      const filterByHomework = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Homework');
-      const filterByClasswork = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Classwork');
-      const filterByQuizzes = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Quiz');
-      const filterByProjects = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Project');
-      const filterByExams = gradesArray.filter((gradeObj) => gradeObj.assignment_category === 'Exam');
-
-      // console.warn('Grades for homework: ', filterByHomework);
-      // console.warn('Grades for classwork: ', filterByClasswork);
-      // console.warn('Grades for quizzes: ', filterByQuizzes);
-
-      // TODO: Loop through each filtered array to find the scores, add the scores, then render the averages.
-
-      filterByHomework.forEach((gradeObj) => {
-        if (gradeObj.score) {
-          homeworkAccumulator += gradeObj.score;
-          gradeObj.homework_average = homeworkAccumulator; // eslint-disable-line no-param-reassign
-          copyOfGrades.push(gradeObj);
+      // Group grades by student_id
+      // acc = obj that is being built as we iterate.
+      // grade = the current grade object we're iterating through.
+      const groupedByStudent = gradesData.reduce((acc, grade) => {
+        // If acc doesn't already exist as an entry for the current grade.student_id, create a new object for the student and add some values to it.
+        if (!acc[grade.student_id]) {
+          acc[grade.student_id] = {
+            student_id: grade.student_id,
+            student_name: `${grade.student_first_name} ${grade.student_last_name}`,
+            grades: {},
+          };
+          console.log('acc obj: ', acc);
         }
-      });
-      filterByClasswork.forEach((gradeObj) => {
-        if (gradeObj.score) {
-          classworkAccumulator += gradeObj.score;
-          gradeObj.classwork_average = classworkAccumulator; // eslint-disable-line no-param-reassign
-          copyOfGrades.push(gradeObj);
-        }
-      });
-      filterByQuizzes.forEach((gradeObj) => {
-        if (gradeObj.score) {
-          quizAccumulator += gradeObj.score;
-          gradeObj.quiz_average = quizAccumulator; // eslint-disable-line no-param-reassign
-          copyOfGrades.push(gradeObj);
-        }
-      });
-      filterByProjects.forEach((gradeObj) => {
-        if (gradeObj.score) {
-          examAccumulator += gradeObj.score;
-          gradeObj.exam_average = examAccumulator; // eslint-disable-line no-param-reassign
-          copyOfGrades.push(gradeObj);
-        }
-      });
-      filterByExams.forEach((gradeObj) => {
-        if (gradeObj.score) {
-          projectAccumulator += gradeObj.score;
-          gradeObj.project_average = projectAccumulator; // eslint-disable-line no-param-reassign
-          copyOfGrades.push(gradeObj);
-        }
-      });
 
-      // console.warn("Homework score sum: ", homeworkAccumulator);
-      // console.warn("Classwork score sum: ", classworkAccumulator);
-      // console.warn("Quizzes score sum: ", quizAccumulator);
+        // Add grades under the correct category
+        if (!acc[grade.student_id].grades[grade.assignment_category]) {
+          // In the student's grades object, if grade.assignment_category doesn't exist, initialize it to zero.
+          acc[grade.student_id].grades[grade.assignment_category] = 0;
+        }
+        // Add the grade.score to the current assignment_category in the student’s grades.
+        acc[grade.student_id].grades[grade.assignment_category] += grade.score;
 
-      setGrades(copyOfGrades);
+        // So that acc can be used in the next loop.
+        return acc;
+      }, {});
+
+      setStudents(Object.values(groupedByStudent));
+      console.log('Grades by student', groupedByStudent);
     });
-  }, []);
+  }, [firebaseKey]);
 
   return (
     <div className="d-flex flex-column my-4 text-center">
       <h1>Grades</h1>
 
       <div className="d-flex flex-row flex-wrap justify-content-center my-4 gradebook-container mb-3">
-        {/* TODO: Grid setup for grade book */}
         <div className="container text-center">
-          {/* Column headers */}
+          {/* Column Headers */}
           <div className="row column-headers mt-5">
             <p className="col">Student</p>
-            <p className="col">Homework</p>
-            <p className="col">Classwork</p>
-            <p className="col">Quizzes</p>
-            <p className="col">Projects</p>
-            <p className="col">Exams</p>
+            {categories.map((category) => (
+              <p key={category} className="col">
+                {category}
+              </p>
+            ))}
           </div>
 
-          {/* Student's grades */}
-          {grades.map((grade) => (
-            <div className="row student-grades" key={grade.firebaseKey}>
-              <p className="col">
-                {grade.student_first_name} {grade.student_last_name}
-              </p>
-              <p className="col">{grade.homework_average === undefined ? '--' : grade.homework_average}</p>
-              <p className="col">{grade.classwork_average === undefined ? '--' : grade.classwork_average}</p>
-              <p className="col">{grade.quiz_average === undefined ? '--' : grade.quiz_average}</p>
-              <p className="col">{grade.project_average === undefined ? '--' : grade.project_average}</p>
-              <p className="col">{grade.exam_average === undefined ? '--' : grade.exam_average}</p>
+          {/* Student Rows */}
+          {students.map((student) => (
+            <div className="row student-grades" key={student.student_id}>
+              <p className="col">{student.student_name}</p>
+              {categories.map((category) => (
+                <p key={`${student.student_id}_${category}`} className="col">
+                  {student.grades[category] || '--'}
+                </p>
+              ))}
             </div>
           ))}
         </div>
@@ -117,5 +85,7 @@ export default function GradeBook({ params }) {
 }
 
 GradeBook.propTypes = {
-  params: PropTypes.objectOf({}).isRequired,
+  params: PropTypes.shape({
+    firebaseKey: PropTypes.string.isRequired,
+  }).isRequired,
 };

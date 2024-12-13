@@ -75,3 +75,20 @@ svg {
   background-color: #222;
   font-weight: 200;
 }
+
+/* 
+  =========================================================== Grade book ===========================================================
+*/
+.gradebook-container {
+  background-color: #222;
+}
+
+.column-headers {
+  font-weight: 800;
+  font-size: 1.10rem;
+}
+
+.student-grades {
+  color: #F2FF49;
+  font-weight: 700;
+}

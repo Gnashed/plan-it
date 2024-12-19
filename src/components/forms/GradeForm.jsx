@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import { getStudentsByClassroomId } from '../../api/studentData';
 // import { createGrade, updateGrade } from '../../api/gradesData';
 
 // Info to collect from the user
@@ -15,13 +16,13 @@ const initialFormState = {
 
 export default function GradeForm({ obj = initialFormState }) {
   const [formInput, setFormInput] = useState(obj);
+  const [students, setStudents] = useState([]);
 
-  useEffect(() => {}, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('You clicked the submit button');
-  };
+  useEffect(() => {
+    getStudentsByClassroomId('-OCdhp_HzyrJEBi30uq6').then((grades) => {
+      setStudents(grades);
+    });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +30,11 @@ export default function GradeForm({ obj = initialFormState }) {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('You clicked the submit button');
   };
 
   return (
@@ -41,9 +47,11 @@ export default function GradeForm({ obj = initialFormState }) {
           <Form.Label>Select student</Form.Label>
           <Form.Select onChange={handleChange} name="" value={formInput.classroom_name || ''} required>
             <option value="">Select...</option>
-            <option>Student 1</option>
-            <option>Student 2</option>
-            <option>Student 3</option>
+            {students.map((student) => (
+              <option key={student.firebaseKey}>
+                {student.first_name} {student.last_name}
+              </option>
+            ))}
           </Form.Select>
         </Form.Group>
 

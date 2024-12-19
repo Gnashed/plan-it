@@ -43,7 +43,7 @@ export default function GradeBook() {
             <Dropdown.Menu>
               {classrooms.map((classroom) => (
                 <Dropdown.Item key={classroom.firebaseKey}>
-                  <Link href={`/grades/${classroom.firebaseKey}`}>{classroom.classroom_name}</Link>
+                  <Link href={`/grade/${classroom.firebaseKey}`}>{classroom.classroom_name}</Link>
                 </Dropdown.Item>
               ))}
             </Dropdown.Menu>

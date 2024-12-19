@@ -89,7 +89,7 @@ export default function GradeBook({ params }) {
         </div>
       </div>
 
-      <AddButton buttonProp="grades" />
+      <AddButton buttonProp="grade" />
     </div>
   );
 }

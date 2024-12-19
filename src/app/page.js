@@ -92,7 +92,7 @@ function Home() {
           </Link>
         </div>
         <div className="col dashboard-columns">
-          <Link href="/grades" passHref>
+          <Link href="/grade" passHref>
             View grades
           </Link>
         </div>

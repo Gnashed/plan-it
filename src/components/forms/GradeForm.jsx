@@ -9,6 +9,7 @@ import { getStudentsByClassroomId } from '../../api/studentData';
 
 // Info to collect from the user
 const initialFormState = {
+  select_student: '',
   assignment_category: '',
   assignment_name: '',
   score: Number(),
@@ -45,7 +46,7 @@ export default function GradeForm({ obj = initialFormState }) {
         {/* SELECT Student */}
         <Form.Group controlId="">
           <Form.Label>Select student</Form.Label>
-          <Form.Select onChange={handleChange} name="" value={formInput.classroom_name || ''} required>
+          <Form.Select onChange={handleChange} name="select_student" value={formInput.select_student || ''} required>
             <option value="">Select...</option>
             {students.map((student) => (
               <option key={student.firebaseKey}>
@@ -58,7 +59,7 @@ export default function GradeForm({ obj = initialFormState }) {
         {/* SELECT Assigment Category */}
         <Form.Group controlId="">
           <Form.Label>Which category?</Form.Label>
-          <Form.Select onChange={handleChange} name="" value={formInput.classroom_name || ''} required>
+          <Form.Select onChange={handleChange} name="assignment_category" value={formInput.assignment_category || ''} required>
             <option value="">Select...</option>
             <option>Homework</option>
             <option>Classwork</option>

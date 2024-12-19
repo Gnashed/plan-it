@@ -34,11 +34,24 @@ export default function GradeBook({ params }) {
 
         // Add grades under the correct category
         if (!acc[grade.student_id].grades[grade.assignment_category]) {
-          // In the student's grades object, if grade.assignment_category doesn't exist, initialize it to zero.
-          acc[grade.student_id].grades[grade.assignment_category] = 0;
+          // In the student's grades object, if grade.assignment_category doesn't exist, initialize it.
+          acc[grade.student_id].grades[grade.assignment_category] = {
+            totalScore: 0,
+            count: 0,
+            average: 0,
+          };
         }
-        // Add the grade.score to the current assignment_category in the student’s grades.
-        acc[grade.student_id].grades[grade.assignment_category] += grade.score;
+
+        // Update total score and count
+        const categoryData = acc[grade.student_id].grades[grade.assignment_category];
+        categoryData.totalScore += grade.score;
+        categoryData.count += 1;
+
+        // Calculate the average.
+        categoryData.average = categoryData.totalScore / categoryData.count;
+
+        // // Add the grade.score to the current assignment_category in the student’s grades.
+        // acc[grade.student_id].grades[grade.assignment_category] += grade.score;
 
         // So that acc can be used in the next loop.
         return acc;
@@ -71,7 +84,7 @@ export default function GradeBook({ params }) {
               <p className="col">{student.student_name}</p>
               {categories.map((category) => (
                 <p key={`${student.student_id}_${category}`} className="col">
-                  {student.grades[category] || '--'}
+                  {student.grades[category]?.average?.toFixed(1) || '--'}
                 </p>
               ))}
             </div>

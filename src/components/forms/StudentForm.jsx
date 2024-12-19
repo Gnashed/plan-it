@@ -54,7 +54,7 @@ export default function StudentForm({ obj = initialFormState }) {
     e.preventDefault();
 
     if (obj.firebaseKey) {
-      updateStudent(formData).then(() => router.push(`/student/${obj.firebaseKey}`));
+      updateStudent(formData).then(() => router.push(`/student`));
       console.log(formData);
     } else {
       const payload = { ...formData, teacher_id: user.uid };

@@ -6,6 +6,7 @@ import AddButton from '../../../components/buttons/AddButton';
 import { getGrades } from '../../../api/gradesData';
 
 export default function GradeBook({ params }) {
+  // The classroom id
   const { firebaseKey } = params;
 
   const [categories, setCategories] = useState([]);

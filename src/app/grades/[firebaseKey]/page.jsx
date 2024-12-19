@@ -50,9 +50,6 @@ export default function GradeBook({ params }) {
         // Calculate the average.
         categoryData.average = categoryData.totalScore / categoryData.count;
 
-        // // Add the grade.score to the current assignment_category in the student’s grades.
-        // acc[grade.student_id].grades[grade.assignment_category] += grade.score;
-
         // So that acc can be used in the next loop.
         return acc;
       }, {});

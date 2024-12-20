@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams , useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -50,8 +50,15 @@ export default function GradeForm({ obj = initialFormState }) {
       console.log('This record exist: ', formInput);
     } else {
       const splitStudentName = formInput.select_student.split(' ');
-      // TODO: Figure out how to add the student's ID to the payload.
-      const payload = { ...formInput, student_first_name: splitStudentName[0], student_last_name: splitStudentName[1], classroom_id: classroomId };
+      const findSelectedStudent = students.find((student) => student.first_name === splitStudentName[0] && student.last_name === splitStudentName[1]);
+
+      const payload = {
+        ...formInput,
+        student_first_name: splitStudentName[0],
+        student_last_name: splitStudentName[1],
+        classroom_id: classroomId,
+        student_id: findSelectedStudent ? findSelectedStudent.firebaseKey : '',
+      };
       createGrade(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateGrade(patchPayload).then(() => router.push(`/grade/${classroomId}`));

@@ -89,7 +89,7 @@ export default function GradeForm({ obj = initialFormState }) {
 
         {/* SUBMIT BUTTON  */}
         <Button type="submit" variant="success" className="my-5">
-          {obj.firebaseKey ? 'Update ' : 'Create '} grade
+          {obj.firebaseKey ? 'Update ' : 'Add '} grade
         </Button>
       </Form>
     </div>

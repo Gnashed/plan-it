@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -19,9 +20,13 @@ export default function GradeForm({ obj = initialFormState }) {
   const [formInput, setFormInput] = useState(obj);
   const [students, setStudents] = useState([]);
 
+  const searchParams = useSearchParams();
+  const classroomId = searchParams.get('classroomId');
+
   useEffect(() => {
     // TODO: Figure out how to dynamically pass in the classroomId.
-    getStudentsByClassroomId('-OCdhp_HzyrJEBi30uq6').then((grades) => {
+    // getStudentsByClassroomId('-OCdhp_HzyrJEBi30uq6').then((grades) => {
+    getStudentsByClassroomId(classroomId).then((grades) => {
       setStudents(grades);
     });
   }, []);

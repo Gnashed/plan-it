@@ -2,15 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AddButton from '../../../components/buttons/AddButton';
+// import AddButton from '../../../components/buttons/AddButton';
+import { useRouter } from 'next/navigation';
+import Button from 'react-bootstrap/Button';
 import { getGrades } from '../../../api/gradesData';
 
 export default function GradeBook({ params }) {
   // The classroom id
   const { firebaseKey } = params;
+  const router = useRouter();
 
   const [categories, setCategories] = useState([]);
   const [students, setStudents] = useState([]);
+
+  // Added a search param so I can access the firebaseKey on the destination page (GradeForm.jsx).
+  const handleClick = () => {
+    router.push(`/grade/new/?classroomId=${firebaseKey}`);
+  };
 
   useEffect(() => {
     getGrades(firebaseKey).then((gradesData) => {
@@ -90,7 +98,10 @@ export default function GradeBook({ params }) {
         </div>
       </div>
 
-      <AddButton buttonProp="grade" />
+      {/* <AddButton buttonProp="grade" /> */}
+      <Button variant="primary" onClick={handleClick}>
+        Add a grade
+      </Button>
     </div>
   );
 }

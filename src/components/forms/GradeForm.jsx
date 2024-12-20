@@ -24,8 +24,6 @@ export default function GradeForm({ obj = initialFormState }) {
   const classroomId = searchParams.get('classroomId');
 
   useEffect(() => {
-    // TODO: Figure out how to dynamically pass in the classroomId.
-    // getStudentsByClassroomId('-OCdhp_HzyrJEBi30uq6').then((grades) => {
     getStudentsByClassroomId(classroomId).then((grades) => {
       setStudents(grades);
     });
@@ -41,7 +39,8 @@ export default function GradeForm({ obj = initialFormState }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('You clicked the submit button');
+
+    console.log('The data you submitted: ', formInput);
   };
 
   return (
@@ -98,5 +97,16 @@ export default function GradeForm({ obj = initialFormState }) {
 
 // TODO: Remember this should match the same structure that Firebase is expecting the obj to be.
 GradeForm.propTypes = {
-  obj: PropTypes.shape({}),
+  obj: PropTypes.shape({
+    select_student: PropTypes.string,
+    assignment_category: PropTypes.string,
+    assignment_name: PropTypes.string,
+    score: PropTypes.number,
+    classroom_id: PropTypes.string,
+    student_first_name: PropTypes.string,
+    student_last_name: PropTypes.string,
+    student_id: PropTypes.string,
+    date: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }),
 };

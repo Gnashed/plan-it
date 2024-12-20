@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams , useRouter } from 'next/navigation';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { getStudentsByClassroomId } from '../../api/studentData';
-// import { createGrade, updateGrade } from '../../api/gradesData';
+import { createGrade, updateGrade } from '../../api/gradesData';
 
 // Info to collect from the user
 const initialFormState = {
@@ -14,12 +14,17 @@ const initialFormState = {
   assignment_category: '',
   assignment_name: '',
   score: Number(),
+  student_first_name: '',
+  student_last_name: '',
+  student_id: '',
+  classroom_id: '',
 };
 
 export default function GradeForm({ obj = initialFormState }) {
   const [formInput, setFormInput] = useState(obj);
   const [students, setStudents] = useState([]);
 
+  const router = useRouter();
   const searchParams = useSearchParams();
   const classroomId = searchParams.get('classroomId');
 
@@ -40,7 +45,20 @@ export default function GradeForm({ obj = initialFormState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('The data you submitted: ', formInput);
+    if (obj.firebaseKey) {
+      updateGrade(formInput).then(() => router.push(`/grade/${classroomId}`));
+      console.log('This record exist: ', formInput);
+    } else {
+      const splitStudentName = formInput.select_student.split(' ');
+      // TODO: Figure out how to add the student's ID to the payload.
+      const payload = { ...formInput, student_first_name: splitStudentName[0], student_last_name: splitStudentName[1], classroom_id: classroomId };
+      createGrade(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateGrade(patchPayload).then(() => router.push(`/grade/${classroomId}`));
+      });
+    }
+
+    // console.log('The data you submitted: ', formInput);
   };
 
   return (
@@ -95,7 +113,6 @@ export default function GradeForm({ obj = initialFormState }) {
   );
 }
 
-// TODO: Remember this should match the same structure that Firebase is expecting the obj to be.
 GradeForm.propTypes = {
   obj: PropTypes.shape({
     select_student: PropTypes.string,

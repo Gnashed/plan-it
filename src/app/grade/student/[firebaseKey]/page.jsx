@@ -17,7 +17,8 @@ export default function ViewStudentGrades({ params }) {
       <h1>View Grades for {firebaseKey}</h1>
 
       {studentGrades.map((grade) => (
-        <div>
+        // TODO: Come up with a better way to assign a unique key.
+        <div key={`${grade.student_first_name} ${grade.student_last_name} ${grade.firebaseKey}`}>
           <p>
             {grade.student_first_name} {grade.student_last_name}
           </p>

@@ -2,14 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AddButton from '../../../components/buttons/AddButton';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Button from 'react-bootstrap/Button';
 import { getGrades } from '../../../api/gradesData';
 
 export default function GradeBook({ params }) {
+  // The classroom id
   const { firebaseKey } = params;
+  const router = useRouter();
 
   const [categories, setCategories] = useState([]);
   const [students, setStudents] = useState([]);
+
+  // Added a search param so I can access the firebaseKey on the destination page (GradeForm.jsx).
+  const handleClick = () => {
+    router.push(`/grade/new/?classroomId=${firebaseKey}`);
+  };
 
   useEffect(() => {
     getGrades(firebaseKey).then((gradesData) => {
@@ -34,11 +43,21 @@ export default function GradeBook({ params }) {
 
         // Add grades under the correct category
         if (!acc[grade.student_id].grades[grade.assignment_category]) {
-          // In the student's grades object, if grade.assignment_category doesn't exist, initialize it to zero.
-          acc[grade.student_id].grades[grade.assignment_category] = 0;
+          // In the student's grades object, if grade.assignment_category doesn't exist, initialize it.
+          acc[grade.student_id].grades[grade.assignment_category] = {
+            totalScore: 0,
+            count: 0,
+            average: 0,
+          };
         }
-        // Add the grade.score to the current assignment_category in the student’s grades.
-        acc[grade.student_id].grades[grade.assignment_category] += grade.score;
+
+        // Update total score and count
+        const categoryData = acc[grade.student_id].grades[grade.assignment_category];
+        categoryData.totalScore += grade.score;
+        categoryData.count += 1;
+
+        // Calculate the average.
+        categoryData.average = categoryData.totalScore / categoryData.count;
 
         // So that acc can be used in the next loop.
         return acc;
@@ -68,10 +87,14 @@ export default function GradeBook({ params }) {
           {/* Student Rows */}
           {students.map((student) => (
             <div className="row student-grades" key={student.student_id}>
-              <p className="col">{student.student_name}</p>
+              <p className="col">
+                <Link href={`/grade/student/${student.student_id}`} passHref>
+                  {student.student_name}
+                </Link>
+              </p>
               {categories.map((category) => (
                 <p key={`${student.student_id}_${category}`} className="col">
-                  {student.grades[category] || '--'}
+                  {student.grades[category]?.average?.toFixed(1) || '--'}
                 </p>
               ))}
             </div>
@@ -79,7 +102,9 @@ export default function GradeBook({ params }) {
         </div>
       </div>
 
-      <AddButton buttonProp="grades" />
+      <Button variant="warning" onClick={handleClick}>
+        Add a grade
+      </Button>
     </div>
   );
 }

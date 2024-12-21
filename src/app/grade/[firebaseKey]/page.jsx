@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import AddButton from '../../../components/buttons/AddButton';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import { getGrades } from '../../../api/gradesData';
 
@@ -87,7 +87,11 @@ export default function GradeBook({ params }) {
           {/* Student Rows */}
           {students.map((student) => (
             <div className="row student-grades" key={student.student_id}>
-              <p className="col">{student.student_name}</p>
+              <p className="col">
+                <Link href={`/grade/student/${student.student_id}`} passHref>
+                  {student.student_name}
+                </Link>
+              </p>
               {categories.map((category) => (
                 <p key={`${student.student_id}_${category}`} className="col">
                   {student.grades[category]?.average?.toFixed(1) || '--'}
@@ -98,8 +102,7 @@ export default function GradeBook({ params }) {
         </div>
       </div>
 
-      {/* <AddButton buttonProp="grade" /> */}
-      <Button variant="primary" onClick={handleClick}>
+      <Button variant="warning" onClick={handleClick}>
         Add a grade
       </Button>
     </div>

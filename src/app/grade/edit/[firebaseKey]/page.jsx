@@ -12,6 +12,7 @@ export default function EditGradeForm({ params }) {
 
   useEffect(() => {
     getSingleGrade(firebaseKey).then(setStudentGradeData);
+    console.log(studentGradeData);
   }, [firebaseKey]);
 
   return (

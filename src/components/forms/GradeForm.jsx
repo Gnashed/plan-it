@@ -31,8 +31,9 @@ export default function GradeForm({ obj = initialFormState }) {
   useEffect(() => {
     getStudentsByClassroomId(classroomId).then((grades) => {
       setStudents(grades);
+      if (obj.firebaseKey) setFormInput(obj);
     });
-  }, []);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

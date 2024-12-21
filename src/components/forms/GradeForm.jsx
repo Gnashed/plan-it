@@ -13,7 +13,7 @@ const initialFormState = {
   select_student: '',
   assignment_category: '',
   assignment_name: '',
-  score: Number(),
+  score: 0,
   student_first_name: '',
   student_last_name: '',
   student_id: '',
@@ -59,7 +59,9 @@ export default function GradeForm({ obj = initialFormState }) {
         student_last_name: splitStudentName[1],
         classroom_id: classroomId,
         student_id: findSelectedStudent ? findSelectedStudent.firebaseKey : '',
+        score: Number(formInput.score),
       };
+      console.log(typeof payload.score);
       createGrade(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateGrade(patchPayload).then(() => router.push(`/grade/${classroomId}`));

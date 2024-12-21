@@ -36,6 +36,26 @@ const getGrades = (firebaseKey) =>
       .catch(reject);
   });
 
+const getSingleGrade = (firebaseKey) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/grades/${firebaseKey}.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          resolve(data);
+        } else {
+          resolve([]);
+        }
+        // console.warn(data);
+      })
+      .catch(reject);
+  });
+
 const updateGrade = (payload) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/grades/${payload.firebaseKey}.json`, {
@@ -63,4 +83,4 @@ const deleteGrade = (gradeId) =>
       .catch(reject);
   });
 
-export { createGrade, getGrades, updateGrade, deleteGrade };
+export { createGrade, getGrades, getSingleGrade, updateGrade, deleteGrade };
